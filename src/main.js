@@ -3,8 +3,8 @@
 const TASK_COUNT = 3;
 
 const createSiteMenuTemplate = () => {
-  return (
-    `<section class="control__btn-wrap">
+  return (`
+    <section class="control__btn-wrap">
       <input
         type="radio"
         name="control"
@@ -468,7 +468,6 @@ render(siteMainElement, createBoardTemplate(), `beforeend`);
 
 const taskListElement = siteMainElement.querySelector(`.board__tasks`);
 render(taskListElement, createTaskEditorTemplate(), `beforeend`);
-
 new Array(TASK_COUNT)
   .fill(``)
   .forEach(
