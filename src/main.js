@@ -4,12 +4,10 @@ import {createFilterTemplate} from './components/filter.js';
 import {createTaskTemplate} from './components/task.js';
 import {createTaskEditorTemplate} from './components/task-editor.js';
 import {createLoadMoreButtonTemplate} from './components/load-more-button.js';
+import {render} from './components/util.js';
 
 const TASK_COUNT = 3;
 
-const render = (container, template, place) => {
-  container.insertAdjacentHTML(place, template);
-};
 
 const siteMainElement = document.querySelector(`.main`);
 const siteHeaderElement = siteMainElement.querySelector(`.main__control`);
