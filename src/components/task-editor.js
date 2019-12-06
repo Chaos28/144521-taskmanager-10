@@ -1,11 +1,11 @@
-import {COLORS, DAYS, MONTH_NAMES} from '../const-data';
+import {DEFAULT_COLORS, DAYS, MONTH_NAMES} from '../const-data';
 import {formatTime} from '../util.js';
 
 const createColorsMarkup = (colors, currentColor) => {
   return colors
-    .map((color) => {
-      return (
-        `<input
+  .map((color) => {
+    return (
+      `<input
           type="radio"
           id="color-${color}-4"
           class="card__color-input card__color-input--${color} visually-hidden"
@@ -18,8 +18,8 @@ const createColorsMarkup = (colors, currentColor) => {
           class="card__color card__color--${color}"
           >${color}</label
         >`
-      );
-    })
+    );
+  })
     .join(`\n`);
 };
 
@@ -90,7 +90,7 @@ export const createTaskEditTemplate = (task) => {
   const deadlineClass = isExpired ? `card--deadline` : ``;
 
   const tagsMarkup = createHashtags(tags);
-  const colorsMarkup = createColorsMarkup(COLORS, color);
+  const colorsMarkup = createColorsMarkup(DEFAULT_COLORS, color);
   const repeatingDaysMarkup = createRepeatingDaysMarkup(DAYS, repeatingDays);
 
   return (

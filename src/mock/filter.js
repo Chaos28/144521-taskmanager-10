@@ -1,12 +1,13 @@
-const filterNames = [`all`, `today`, `favorites`, `repeating`, `tags`, `archive`];
+const FILTER_NAMES = [`all`, `today`, `favorites`, `repeating`, `tags`, `archive`];
 
-const generateFilters = () => {
-  return filterNames.map((item) => {
-    return {
-      name: item,
-      count: Math.floor(Math.random() * 10)
-    };
-  });
+const getRandomFilter = ({name}) => {
+  return {
+    name,
+    count: Math.floor(Math.random() * 10)
+  };
 };
+
+const generateFilters = () =>
+  FILTER_NAMES.map(getRandomFilter);
 
 export {generateFilters};
