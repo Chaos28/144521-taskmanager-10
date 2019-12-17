@@ -21,7 +21,6 @@ const castTimeFormat = (value) => {
 const formatTime = (date) => {
   const hours = castTimeFormat(date.getHours() % 12);
   const minutes = castTimeFormat(date.getMinutes());
-
   const timeInterval = date.getHours() > 11 ? `pm` : `am`;
 
   return `${hours}:${minutes} ${timeInterval}`;
