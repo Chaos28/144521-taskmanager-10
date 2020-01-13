@@ -1,14 +1,14 @@
-const RENDER_POSITION = {
+const RenderPosition = {
   AFTERBEGIN: `afterbegin`,
   BEFOREEND: `beforeend`
 };
 
 const render = (container, component, place = `beforeend`) => {
   switch (place) {
-    case RENDER_POSITION.AFTERBEGIN:
+    case RenderPosition.AFTERBEGIN:
       container.prepend(component.getElement());
       break;
-    case RENDER_POSITION.BEFOREEND:
+    case RenderPosition.BEFOREEND:
       container.append(component.getElement());
       break;
   }
@@ -38,4 +38,4 @@ const replace = (newComponent, oldComponent) => {
   }
 };
 
-export {render, createElement, RENDER_POSITION, remove, replace};
+export {render, createElement, RenderPosition, remove, replace};

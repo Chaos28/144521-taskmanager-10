@@ -1,11 +1,11 @@
-const castTimeFormat = (value) => {
-  return value < 10 ? `0${value}` : String(value);
+import moment from 'moment';
+
+const formatTime = (date) => {
+  return moment(date).format(`hh: mm A`);
 };
 
-export const formatTime = (date) => {
-  const hours = castTimeFormat(date.getHours() % 12);
-  const minutes = castTimeFormat(date.getMinutes());
-  const timeInterval = date.getHours() > 11 ? `pm` : `am`;
-
-  return `${hours}:${minutes} ${timeInterval}`;
+const formatDate = (date) => {
+  return moment(date).format(`DD MMMM`);
 };
+
+export {formatTime, formatDate};
