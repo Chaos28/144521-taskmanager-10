@@ -1,6 +1,6 @@
 import AbstractComponent from './abstract-component';
 // import {MONTH_NAMES} from '../const-data';
-import {formatTime, formatDate, MONTH_NAMES} from '../utils/common-time';
+import {formatTime, formatDate} from '../utils/common-time';
 
 const createHashtagsMarkup = (hashtags) => {
   return hashtags.map((hashtag) => {

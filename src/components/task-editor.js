@@ -1,4 +1,4 @@
-import {DEFAULT_COLORS, DAYS, MONTH_NAMES} from '../const-data';
+import {DEFAULT_COLORS, DAYS} from '../const-data';
 import {formatTime, formatDate} from '../utils/common-time';
 import AbstractSmartComponent from './abstract-smart-component';
 
