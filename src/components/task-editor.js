@@ -52,25 +52,23 @@ const createRepeatingDaysMarkup = (days, repeatingDays) => {
 const createHashtags = (tags) => {
   return Array.from(tags)
     .map((tag) => {
-      return (
-        `<span class="card__hashtag-inner">
-          <input
-            type="hidden"
-            name="hashtag"
-            value=${tag}
-            class="card__hashtag-hidden-input"
-          />
-          <p class="card__hashtag-name">
-            #${tag}
-          </p>
-          <button
-              type="button"
-              class="card__hashtag-delete"
-          >
-            delete
-          </button>
-        </span>`
-      );
+      return `<span class="card__hashtag-inner">
+                <input
+                  type="hidden"
+                  name="hashtag"
+                  value=${tag}
+                  class="card__hashtag-hidden-input"
+                />
+                <p class="card__hashtag-name">
+                  #${tag}
+                </p>
+                <button
+                    type="button"
+                    class="card__hashtag-delete"
+                >
+                  delete
+                </button>
+              </span>`;
     })
     .join(`\n`);
 };
