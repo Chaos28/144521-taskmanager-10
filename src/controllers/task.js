@@ -45,7 +45,10 @@ export default class TaskController {
       }));
     });
 
-    this._taskEditorComponent.setSubmitButtonClickHandler(() => this._replaceEditToTask());
+    this._taskEditorComponent.setSubmitButtonClickHandler((evt) => {
+      evt.preventDefault();
+      this._replaceEditToTask();
+    });
 
     if (oldTaskEditorComponent && oldTaskComponent) {
       replace(this._taskComponent, oldTaskComponent);
@@ -62,6 +65,8 @@ export default class TaskController {
   }
 
   _replaceEditToTask() {
+    document.removeEventListener(`keydown`, this._onEscKeyDown);
+
     this._taskEditorComponent.reset();
 
     replace(this._taskComponent, this._taskEditorComponent);
