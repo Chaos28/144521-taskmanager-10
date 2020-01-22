@@ -1,6 +1,6 @@
 import AbstractComponent from './abstract-component';
-// import {MONTH_NAMES} from '../const-data';
-import {formatTime, formatDate} from '../utils/common-time';
+import {formatTime, formatDate, isOverdueDate} from '../utils/common-time';
+import he from 'he';
 
 const createHashtagsMarkup = (hashtags) => {
   return hashtags.map((hashtag) => {
@@ -17,14 +17,15 @@ const createButtonMarkup = (name, isActive) => {
 };
 
 const createTaskTemplate = (task) => {
-  const {description, tags, dueDate, color, repeatingDays} = task;
+  const {description: notSanitizedDescription, tags, dueDate, color, repeatingDays} = task;
 
-  const isExpired = dueDate instanceof Date && dueDate < Date.now();
+  const isExpired = dueDate instanceof Date && isOverdueDate(dueDate, new Date());
 
   const isDateShowing = !!dueDate;
 
   const date = isDateShowing ? formatDate(dueDate) : ``;
   const time = isDateShowing ? formatTime(dueDate) : ``;
+  const description = he.encode(notSanitizedDescription);
 
   const hashtags = createHashtagsMarkup(Array.from(tags));
   const editButton = createButtonMarkup(`edit`, true);

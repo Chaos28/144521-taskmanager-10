@@ -1,4 +1,4 @@
-import {DEFAULT_COLORS} from '../const-data';
+import {COLORS} from '../const-data';
 
 const DESCRIPTIONS = [`Изучить теорию по лекции`, `Выполнить домашнее задание`, `Сдать домашнее задание наставнику`];
 
@@ -46,11 +46,12 @@ const generateTask = () => {
   const dueDate = Math.random() > 0.5 ? null : getRandomDate();
 
   return {
+    id: String(new Date() + Math.random()),
     description: getRandomArrayItem(DESCRIPTIONS),
     dueDate,
     repeatingDays: dueDate ? DefaultRepeatingDays : generateRepeatingDays(),
     tags: new Set(generateTags(Tags)),
-    color: getRandomArrayItem(DEFAULT_COLORS),
+    color: getRandomArrayItem(COLORS),
     isFavorite: Math.random() > 0.5,
     idArchive: Math.random() > 0.5
   };
