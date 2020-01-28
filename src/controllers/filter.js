@@ -1,7 +1,7 @@
-import FilterComponent from '../components/filter';
-import {FilterType} from '../const-data';
-import {render, replace} from '../utils/render';
-import {getTasksByFilter} from '../utils/filter';
+import FilterComponent from '../components/filter.js';
+import {FilterType} from '../const.js';
+import {render, replace, RenderPosition} from '../utils/render.js';
+import {getTasksByFilter} from '../utils/filter.js';
 
 export default class FilterController {
   constructor(container, tasksModel) {
@@ -24,7 +24,7 @@ export default class FilterController {
       return {
         name: filterType,
         count: getTasksByFilter(allTasks, filterType).length,
-        checked: filterType === this._activeFilterType
+        checked: filterType === this._activeFilterType,
       };
     });
     const oldComponent = this._filterComponent;
@@ -35,7 +35,7 @@ export default class FilterController {
     if (oldComponent) {
       replace(this._filterComponent, oldComponent);
     } else {
-      render(container, this._filterComponent);
+      render(container, this._filterComponent, RenderPosition.BEFOREEND);
     }
   }
 

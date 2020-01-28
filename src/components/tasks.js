@@ -1,7 +1,9 @@
-import AbstractComponent from './abstract-component';
+import AbstractComponent from './abstract-component.js';
 
 const createTasksTemplate = () => {
-  return `<div class="board__tasks"></div>`;
+  return (
+    `<div class="board__tasks"></div>`
+  );
 };
 
 

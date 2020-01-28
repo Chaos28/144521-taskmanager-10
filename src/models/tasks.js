@@ -1,5 +1,6 @@
-import {getTasksByFilter} from '../utils/filter';
-import {FilterType} from '../const-data';
+import {getTasksByFilter} from '../utils/filter.js';
+import {FilterType} from '../const.js';
+
 
 export default class Tasks {
   constructor() {
@@ -26,9 +27,8 @@ export default class Tasks {
     this._activeFilterType = filterType;
     this._callHandlers(this._filterChangeHandlers);
   }
-
   removeTask(id) {
-    const index = this._tasks.findIndex((item) => item.id === id);
+    const index = this._tasks.findIndex((it) => it.id === id);
 
     if (index === -1) {
       return false;
