@@ -1,7 +1,7 @@
-import FilterComponent from '../components/filter.js';
-import {FilterType} from '../const.js';
-import {render, replace, RenderPosition} from '../utils/render.js';
-import {getTasksByFilter} from '../utils/filter.js';
+import FilterComponent from '../components/filter';
+import {FilterType} from '../const';
+import {render, replace, RenderPosition} from '../utils/render';
+import {getTasksByFilter} from '../utils/filter';
 
 export default class FilterController {
   constructor(container, tasksModel) {

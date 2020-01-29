@@ -1,4 +1,4 @@
-import {createElement} from '../utils/render.js';
+import {createElement} from '../utils/render';
 
 const HIDDEN_CLASS = `visually-hidden`;
 

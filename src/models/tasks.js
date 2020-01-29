@@ -1,5 +1,5 @@
-import {getTasksByFilter} from '../utils/filter.js';
-import {FilterType} from '../const.js';
+import {getTasksByFilter} from '../utils/filter';
+import {FilterType} from '../const';
 
 
 export default class Tasks {
@@ -21,6 +21,7 @@ export default class Tasks {
 
   setTasks(tasks) {
     this._tasks = Array.from(tasks);
+    this._callHandlers(this._dataChangeHandlers);
   }
 
   setFilter(filterType) {

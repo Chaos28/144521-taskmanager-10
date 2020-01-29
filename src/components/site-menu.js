@@ -1,4 +1,4 @@
-import AbstractComponent from './abstract-component.js';
+import AbstractComponent from './abstract-component';
 
 export const MenuItem = {
   NEW_TASK: `control__new-task`,

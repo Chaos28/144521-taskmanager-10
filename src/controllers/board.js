@@ -1,9 +1,9 @@
-import LoadMoreButtonComponent from '../components/load-more-button.js';
-import TasksComponent from '../components/tasks.js';
-import SortComponent, {SortType} from '../components/sort.js';
-import NoTasksComponent from '../components/no-tasks.js';
-import {render, remove, RenderPosition} from '../utils/render.js';
-import TaskController, {Mode as TaskControllerMode, EmptyTask} from './task.js';
+import LoadMoreButtonComponent from '../components/load-more-button';
+import TasksComponent from '../components/tasks';
+import SortComponent, {SortType} from '../components/sort';
+import NoTasksComponent from '../components/no-tasks';
+import {render, remove, RenderPosition} from '../utils/render';
+import TaskController, {Mode as TaskControllerMode, EmptyTask} from './task';
 
 const SHOWING_TASKS_COUNT_ON_START = 8;
 const SHOWING_TASKS_COUNT_BY_BUTTON = 8;
@@ -18,9 +18,10 @@ const renderTasks = (taskListElement, tasks, onDataChange, onViewChange) => {
 };
 
 export default class BoardController {
-  constructor(container, tasksModel) {
+  constructor(container, tasksModel, api) {
     this._container = container;
     this._tasksModel = tasksModel;
+    this._api = api;
 
     this._showedTaskControllers = [];
     this._showingTasksCount = SHOWING_TASKS_COUNT_ON_START;
@@ -127,11 +128,14 @@ export default class BoardController {
       this._tasksModel.removeTask(oldData.id);
       this._updateTasks(this._showingTasksCount);
     } else {
-      const isSuccess = this._tasksModel.updateTask(oldData.id, newData);
-
-      if (isSuccess) {
-        taskController.render(newData, TaskControllerMode.DEFAULT);
-      }
+      this._api.updateTask(oldData.id, newData)
+        .then((taskModel) => {
+          const isSuccess = this._tasksModel.updateTask(oldData.id, taskModel);
+          if (isSuccess) {
+            taskController.render(taskModel, TaskControllerMode.DEFAULT);
+            this._updateTasks(this._showingTasksCount);
+          }
+        });
     }
   }
 
